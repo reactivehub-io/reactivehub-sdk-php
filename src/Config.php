@@ -22,4 +22,4 @@ class Config {
     return $this->clientSecret;
   }
 }
->?
+?>
