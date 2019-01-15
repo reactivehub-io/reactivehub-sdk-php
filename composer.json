@@ -1,18 +1,18 @@
 {
-    "name": "luizcaciatori/reactivehub-sdk-php",
+    "name": "reactivehub-io/reactivehub-sdk-php",
     "description": "reactivehub.io PHP SDK",
     "type": "library",
     "license": "Apache License 2.0",
     "authors": [
         {
             "name": "Luiz Gustavo Caciatori",
-            "email": "luizgustavo.caciatori@gmail.com"
+            "email": "luiz.gustavo@reactivehub.io"
         }
     ],
     "require": {},
     "autoload": {
         "psr-0": {
-            "luizcaciatori/reactivehub-sdk-php": "SDK.php"
+            "reactivehub-io/reactivehub-sdk-php": "SDK.php"
         }
     }
 }
