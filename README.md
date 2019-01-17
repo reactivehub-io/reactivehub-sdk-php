@@ -8,7 +8,14 @@ TODO
 
 ## Usage
 
-TODO
+Initialize the config with your Client Key, Client Secret and Namespace
+
+```$config = SDK::buildConfig("<team-name>.", "<client-key>", "<client-secret>");``
+
+
+In ```PublishEvent``` the first parameter is the ```Name``` of the [Event](https://docs.reactivehub.io/guide/events) and the second parameter is the ```Payload``` that should be passed as a ```Array```
+
+```SDK::publishEvent($config, "<event-name>", <payload>)``
 
 ## How to contribute
 We'd love to accept your patches and contributions to this project. There are just a few small guidelines you need to follow.
