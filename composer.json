@@ -2,7 +2,7 @@
     "name": "reactivehub-io/reactivehub-sdk-php",
     "description": "reactivehub.io PHP SDK",
     "type": "library",
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Luiz Gustavo Caciatori",
