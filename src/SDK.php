@@ -1,26 +1,39 @@
 <?php
-require "Config.php";
+include "Config.php";
 
-function buildConfig( $teamName, $clientKey, $clientSecret) {
-  return new Config($teamName, $clientKey, $clientSecret);
-}
+class SDK {
 
-function publishEvent( $config, $eventName, $payload) {
-  $teamName = $config.teamName;
-  $clientKey = $config.clientKey;
-  $clientSecret = $config.clientSecret;
+  public static function buildConfig( $teamName, $clientKey, $clientSecret) {
+    return new Config($teamName, $clientKey, $clientSecret);
+  }
 
-  $url = "https://$teamName.reactivehub.io/event/$eventName/";
+  public static function publishEvent( $config, $eventName, $payload) {
+    $teamName = $config->getTeamName();
+    $clientKey = $config->getClientKey();
+    $clientSecret = $config->getClientSecret();
 
-  $request = new HttpRequest($url, HttpRequest::METH_POST);
-  $request->addHeaders(array('client_key' => $clientKey, 'client_secret' => $clientSecret));
-  $request->setBody($payload);
+    $url = "https://$teamName.reactivehub.io/event/$eventName/";
 
-  try {
-      return $request->send()->getBody();
-  } catch (HttpException $ex) {
-      return $ex;
+    print($url);
+
+    $headers = "Content-Type: application/json\r\n"
+      ."client_key: $clientKey\r\n"
+      ."client_secret: $clientSecret\r\n";
+
+    print($headers);
+
+    $options = array(
+      "http" => array(
+        "header" => $headers,
+        "method" => "POST",
+        "contet" => http_build_query($payload)
+      )
+    );
+
+    $context = stream_context_create($options);
+    return file_get_contents($url, false, $context);
   }
 }
+
 
 ?>
